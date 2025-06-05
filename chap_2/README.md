@@ -8,7 +8,7 @@
 Variables are immutable by default. To make a variable mutable we add `mut` before the variable name.
 
 ```rs
-let oranges = 2;  // immutable
-let mut kiwis = 3 // mutable
+let oranges = 2;   // immutable
+let mut kiwis = 3; // mutable
 ```
 
