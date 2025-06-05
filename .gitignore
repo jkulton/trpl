@@ -8,3 +8,6 @@ target/
 
 # macOS users you know what this is
 .DS_Store
+
+# Personal notes
+PRIVATE.md
