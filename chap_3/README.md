@@ -60,11 +60,58 @@ let spaces = spaces.len();
   - Array elements can be accessed using `a[0]` syntax
   - Invalid array index access results in a panic at runtime
 
-<!--
-
 ## 3.3 Functions
 
+- `fn` keyword is used to declare functions
+- Rust uses snake case as convention for function and variable names
+- Rust doesn't care about the order that functions are defined, they just must be defined in a scope that can be seen by the caller
+- Rust functions can have _parameters_. The concrete values callers provide for parameters are called _arguments_.
+- The function's signature must declare the type of each parameter.
+- Multiple function parameter declarations are separated by commas
+- Function bodies are made up of statements and optionally end in an expression
+  - **Statements** are instructions to perform an action, they do _not_ return a value
+  - **Expressions** evaluate to a value
+
+This is a _statement_:
+```rs
+let y = 6;
+```
+
+Statements don't return values, so this isn't valid:
+```rs
+let x = (let y = 6);
+```
+
+- In some languages like C or Ruby the assignment also _returns the value of the assignment_.
+
+Consider this code:
+```rs
+{
+    let x = 3;
+    x + 1
+}
+```
+The block ends in an expression that evaluates to `4`. We then could write code like this:
+```rs
+let y = {
+    let x = 3;
+    x + 1
+};
+```
+As a result of this code the value `4` gets bound to `y`.
+
+- **Expressions do not include an ending semicolon. A semicolon at the end of an expression turns it into a statement**
+- Functions can return values. Return values aren't named, but we must declare a type for the return value using `-> TYPE` in the function's signature.
+- In Rust, the return value of the function is the same as the value of the final expression in the function's body.
+- We can return early using `return`
+- Most functions return the last expression implicitly
+
 ## 3.4 Comments
+
+- `//` are used for comments
+- `//` can also be used at the end of lines containing code
+
+<!--
 
 ## 3.5 Control Flow
 
