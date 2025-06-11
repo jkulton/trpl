@@ -111,8 +111,114 @@ As a result of this code the value `4` gets bound to `y`.
 - `//` are used for comments
 - `//` can also be used at the end of lines containing code
 
-<!--
-
 ## 3.5 Control Flow
 
--->
+### `if` Expressions
+
+- Common `if SOME CONDITION {` syntax
+- We can only use booleans in `if` expressions
+- Rust also supports `else if` syntax
+- Rust matches the first conditional and continues (e.g. `if`, `else if`, `else if` only the first matching conditional applies)
+
+```rs
+let number = 3;
+
+if number < 5 {
+    println!("condition was true");
+} else {
+    println!("condition was false");
+}
+```
+
+#### `if` and `let`
+
+`if` can be used in a `let` statement:
+```rs
+fn main() {
+    let condition = true;
+    let number = if condition { 5 } else { 6 };
+
+    println!("The value of number is: {number}");
+}
+```
+
+When used in such a context both blocks of code must result in the same type.
+
+### Loops
+
+- Rust includes three types of loops
+  - `loop`
+  - `while`
+  - `for`
+
+#### `loop`
+
+- `loop` can be used to continually run code, until the program is stopped or `break` keyword is hit
+- Rust also supports _loop labels_
+- `continue` instructs Rust to skip the rest of the code in the current loop iteration and move on to the next iteration
+
+```rs
+fn main() {
+    loop {
+        println!("again!");
+    }
+}
+```
+
+The following construct can be used to return a value from a `loop` and capture it in a variable:
+
+```rs
+fn main() {
+    let mut counter = 0;
+
+    let result = loop {
+        counter += 1;
+
+        if counter == 10 {
+            break counter * 2;
+        }
+    };
+
+    println!("The result is {result}");
+}
+```
+
+#### `while`
+
+```rs
+fn main() {
+    let mut number = 3;
+
+    while number != 0 {
+        println!("{number}!");
+
+        number -= 1;
+    }
+
+    println!("LIFTOFF!!!");
+}
+```
+
+#### `for`
+
+- Because of conciseness and safety `for` loops are the most commonly used looping construct in Rust
+
+```rs
+fn main() {
+    let a = [10, 20, 30, 40, 50];
+
+    for element in a {
+        println!("the value is: {element}");
+    }
+}
+```
+
+- `for` loops can also be used with a `Range`
+
+```rs
+fn main() {
+    for number in (1..4) {
+        println!("{number}!");
+    }
+}
+```
