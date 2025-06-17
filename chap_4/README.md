@@ -98,3 +98,39 @@ Some types that implement `Copy`:
 
 - Passing a value to a function works similarly to assigning values to variables
 - Passing a variable to a function will either move or copy, just like assignment
+
+## References and Borrowing
+
+Using the `&` notation (_referencing_) we can pass a reference to a function:
+
+```rs
+fn main() {
+    let s1 = String::from("hello");
+
+    let len = calculate_length(&s1);
+
+    println!("The length of '{s1}' is {len}.");
+}
+
+fn calculate_length(s: &String) -> usize {
+    s.len()
+}
+```
+
+- The opposite of referencing is _dereferencing_, accomplished with `*`, the dereference operator.
+- When we create a reference, it _refers_ to the value but does not own it.
+- The action of creating a reference is called _borrowing_
+- References are immutable by default
+- A mutable reference can be created with `& mut VARIABLE`, similarly a function's signature must use `&mut SOME_TYPE` notation
+  - Only one borrowed mutable of a value can exist at once
+  - Similarly a value cannot be borrowed as both mutable and immutable at the same time
+
+### Dangling References
+
+- A _dangling pointer_ is a pointer that references a location whose memory has been freed
+- Rust's compiler prevents dangling pointers
+
+### Rules of References
+
+- At a given time we may have one mutable reference or any number of immutable references to a value
+- References must always be valid
