@@ -76,10 +76,10 @@ This example includes something called a _move_, where `s2` now points at the va
 ### Stack-Only Data: Copy
 
 ```rs
-  let x = 5;
-  let y = x;
+let x = 5;
+let y = x;
 
-  println!("x = {x}, y = {y}");
+println!("x = {x}, y = {y}");
 ```
 
 Note that `x` is not _moved_ to `y`, because this is stack-based data it can be copied more efficiently
@@ -121,7 +121,7 @@ fn calculate_length(s: &String) -> usize {
 - When we create a reference, it _refers_ to the value but does not own it.
 - The action of creating a reference is called _borrowing_
 - References are immutable by default
-- A mutable reference can be created with `& mut VARIABLE`, similarly a function's signature must use `&mut SOME_TYPE` notation
+- A mutable reference can be created with `&mut VARIABLE`, similarly a function's signature must use `&mut SOME_TYPE` notation
   - Only one borrowed mutable of a value can exist at once
   - Similarly a value cannot be borrowed as both mutable and immutable at the same time
 
